@@ -1,9 +1,8 @@
 import uvicorn
-from config import settings
+from .config import settings
 from fastapi import FastAPI
 
 app = FastAPI()
-
 
 def main():
     print("Hello from macropad!")
