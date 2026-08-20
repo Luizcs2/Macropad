@@ -1,0 +1,38 @@
+{
+  "apps": {
+    "notes": { "command": "open -a Notes", "process_name": "Notes" },
+    "calculator": { "command": "open -a Calculator", "process_name": "Calculator" },
+    "chrome": { "command": "open -a 'Google Chrome'", "process_name": "Google Chrome" },
+    "firefox": { "command": "open -a Firefox", "process_name": "firefox" },
+    "safari": { "command": "open -a Safari", "process_name": "Safari" },
+    "finder": { "command": "open -a Finder", "process_name": "Finder" },
+    "terminal": { "command": "open -a Terminal", "process_name": "Terminal" },
+    "iterm": { "command": "open -a iTerm", "process_name": "iTerm2" },
+    "vscode": { "command": "open -a 'Visual Studio Code'", "process_name": "Electron" },
+    "spotify": { "command": "open -a Spotify", "process_name": "Spotify" },
+    "discord": { "command": "open -a Discord", "process_name": "Discord" },
+    "slack": { "command": "open -a Slack", "process_name": "Slack" },
+    "word": { "command": "open -a 'Microsoft Word'", "process_name": "Microsoft Word" },
+    "excel": { "command": "open -a 'Microsoft Excel'", "process_name": "Microsoft Excel" },
+    "powerpoint": { "command": "open -a 'Microsoft PowerPoint'", "process_name": "Microsoft PowerPoint" },
+    "preview": { "command": "open -a Preview", "process_name": "Preview" },
+    "system-settings": { "command": "open -a 'System Settings'", "process_name": "System Settings" },
+    "steam": { "command": "open -a Steam", "process_name": "Steam" },
+    "vlc": { "command": "open -a VLC", "process_name": "VLC" },
+    "mail": { "command": "open -a Mail", "process_name": "Mail" },
+    "photoshop": { "command": "open -a 'Adobe Photoshop 2024'", "process_name": "Adobe Photoshop 2024" }
+  },
+  "system": {
+    "shutdown": { "command": "sudo shutdown -h now" },
+    "restart": { "command": "sudo shutdown -r now" },
+    "sleep": { "command": "pmset sleepnow" },
+    "lock": { "command": "/System/Library/CoreServices/\"Menu Extras\"/User.menu/Contents/Resources/CGSession -suspend" },
+    "logout": { "command": "osascript -e 'tell application \"System Events\" to log out'" },
+    "screenshot": { "command": "screencapture ~/Desktop/screenshot.png" },
+    "empty-trash": { "command": "osascript -e 'tell application \"Finder\" to empty trash'" },
+    "volume-up": { "command": "osascript -e 'set volume output volume ((output volume of (get volume settings)) + 10)'" },
+    "volume-down": { "command": "osascript -e 'set volume output volume ((output volume of (get volume settings)) - 10)'" },
+    "volume-mute": { "command": "osascript -e 'set volume output muted true'" },
+    "volume-unmute": { "command": "osascript -e 'set volume output muted false'" }
+  }
+}

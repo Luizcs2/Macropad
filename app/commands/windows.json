@@ -1,0 +1,41 @@
+{
+  "apps": {
+    "notepad": { "command": "notepad.exe", "process_name": "Notepad.exe" },
+    "calculator": { "command": "calc.exe", "process_name": "CalculatorApp.exe" },
+    "chrome": { "command": "start chrome", "process_name": "chrome.exe" },
+    "firefox": { "command": "start firefox", "process_name": "firefox.exe" },
+    "edge": { "command": "start msedge", "process_name": "msedge.exe" },
+    "explorer": { "command": "explorer.exe", "process_name": "explorer.exe" },
+    "cmd": { "command": "start cmd", "process_name": "cmd.exe" },
+    "powershell": { "command": "start powershell", "process_name": "powershell.exe" },
+    "vscode": { "command": "code", "process_name": "Code.exe" },
+    "spotify": { "command": "start spotify", "process_name": "Spotify.exe" },
+    "discord": { "command": "start discord", "process_name": "Discord.exe" },
+    "slack": { "command": "start slack", "process_name": "slack.exe" },
+    "word": { "command": "start winword", "process_name": "WINWORD.EXE" },
+    "excel": { "command": "start excel", "process_name": "EXCEL.EXE" },
+    "powerpoint": { "command": "start powerpnt", "process_name": "POWERPNT.EXE" },
+    "paint": { "command": "mspaint.exe", "process_name": "mspaint.exe" },
+    "task-manager": { "command": "taskmgr.exe", "process_name": "Taskmgr.exe" },
+    "control-panel": { "command": "control.exe", "process_name": "control.exe" },
+    "settings": { "command": "start ms-settings:", "process_name": "SystemSettings.exe" },
+    "steam": { "command": "start steam", "process_name": "steam.exe" },
+    "vlc": { "command": "start vlc", "process_name": "vlc.exe" },
+    "outlook": { "command": "start outlook", "process_name": "OUTLOOK.EXE" },
+    "photoshop": { "command": "start photoshop", "process_name": "Photoshop.exe" }
+  },
+  "system": {
+    "shutdown": { "command": "shutdown /s /t 0" },
+    "restart": { "command": "shutdown /r /t 0" },
+    "sleep": { "command": "rundll32.exe powrprof.dll,SetSuspendState 0,1,0" },
+    "hibernate": { "command": "shutdown /h" },
+    "lock": { "command": "rundll32.exe user32.dll,LockWorkStation" },
+    "logout": { "command": "shutdown /l" },
+    "cancel-shutdown": { "command": "shutdown /a" },
+    "empty-recycle-bin": { "command": "powershell.exe -Command Clear-RecycleBin -Force" },
+    "screenshot": { "command": "powershell.exe -Command \"(Add-Type -AssemblyName System.Windows.Forms); [System.Windows.Forms.SendKeys]::SendWait('{PRTSC}')\"" },
+    "volume-up": { "command": "nircmd.exe changesysvolume 2000" },
+    "volume-down": { "command": "nircmd.exe changesysvolume -2000" },
+    "volume-mute": { "command": "nircmd.exe mutesysvolume 2" }
+  }
+}

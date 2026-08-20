@@ -1,0 +1,35 @@
+{
+  "apps": {
+    "text-editor": { "command": "gedit", "process_name": "gedit" },
+    "calculator": { "command": "gnome-calculator", "process_name": "gnome-calculator" },
+    "chrome": { "command": "google-chrome", "process_name": "chrome" },
+    "firefox": { "command": "firefox", "process_name": "firefox" },
+    "files": { "command": "nautilus", "process_name": "nautilus" },
+    "terminal": { "command": "gnome-terminal", "process_name": "gnome-terminal-server" },
+    "vscode": { "command": "code", "process_name": "code" },
+    "spotify": { "command": "spotify", "process_name": "spotify" },
+    "discord": { "command": "discord", "process_name": "Discord" },
+    "slack": { "command": "slack", "process_name": "slack" },
+    "libreoffice-writer": { "command": "libreoffice --writer", "process_name": "soffice.bin" },
+    "libreoffice-calc": { "command": "libreoffice --calc", "process_name": "soffice.bin" },
+    "libreoffice-impress": { "command": "libreoffice --impress", "process_name": "soffice.bin" },
+    "settings": { "command": "gnome-control-center", "process_name": "gnome-control-center" },
+    "steam": { "command": "steam", "process_name": "steam" },
+    "vlc": { "command": "vlc", "process_name": "vlc" },
+    "gimp": { "command": "gimp", "process_name": "gimp" },
+    "thunderbird": { "command": "thunderbird", "process_name": "thunderbird" }
+  },
+  "system": {
+    "shutdown": { "command": "systemctl poweroff" },
+    "restart": { "command": "systemctl reboot" },
+    "sleep": { "command": "systemctl suspend" },
+    "hibernate": { "command": "systemctl hibernate" },
+    "lock": { "command": "loginctl lock-session" },
+    "logout": { "command": "gnome-session-quit --logout --no-prompt" },
+    "screenshot": { "command": "gnome-screenshot -f ~/Pictures/screenshot.png" },
+    "empty-trash": { "command": "gio trash --empty" },
+    "volume-up": { "command": "pactl set-sink-volume @DEFAULT_SINK@ +5%" },
+    "volume-down": { "command": "pactl set-sink-volume @DEFAULT_SINK@ -5%" },
+    "volume-mute": { "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle" }
+  }
+}

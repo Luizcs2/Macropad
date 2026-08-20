@@ -1,14 +1,28 @@
-from fastapi import APIRouter, logger
+from fastapi import APIRouter, HTTPException
 
-from ..schemas.commands import Command
-from ..services.commands.appStartup import open_app
+from ..schemas.commands import CommandReq
+from ..services.commands.apps import open_app
+from ..services.commands.sys import sys_sleep,sys_shutdown
 
 router = APIRouter(tags=["commands"], prefix="/commands")
 
-@router.post("/open")
-def app_start(command:Command):
+@router.post("/app/open")
+def app_start(req:CommandReq):
     try:
-        open_app(command)
+        open_app(req)
         return {"status": "ok"}
     except ValueError as e:
-        raise ValueError(f"Failed to open app {command.name}.")
+        raise HTTPException(status_code=404, detail=(e)) from e
+    except RuntimeError as e:
+        raise HTTPException ( status_code=500, detail=(e)) from e
+
+@router.post("/system/sleep")
+def Sleep_system(req:CommandReq):
+    try:
+        sys_sleep(req)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=(e)) from e
+    except RuntimeError as e:
+        raise HTTPException(status_code=500 , detail=(e)) from e
+
+

@@ -1,4 +1,4 @@
 from pydantic import BaseModel
 
-class Command(BaseModel):
+class CommandReq(BaseModel):
     name:str
