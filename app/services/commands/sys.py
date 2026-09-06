@@ -9,37 +9,34 @@ from .factory import CommandFactory
 logger = getLogger(__name__)
 factory = CommandFactory(_OS)
 
-shutdown_timer: threading.Timer | None = None
-
-
-def sys_shutdown(req: CommandReq):
-    global shutdown_timer
-    action = req.name
+def sys_command(req: CommandReq):
+    action = req.name.strip().lower()
 
     if not action:
         raise ValueError("Missing command in request")
+    
+    if action == "shutdown":
+        
+        global shutdown_timer
+        shutdown_timer = threading.Timer(5.0, lambda: subprocess.run(factory.get_system_command("shutdown"), shell=True))
+        
+        try:
+            shutdown_timer.start()
+        except RuntimeError as e:
+            raise RuntimeError(f"Issue shutting down system ({factory.get_system_command('shutdown')}): {e}") from e
+        
+    if action == "sleep":
+        global sleep_timer
+        sleep_timer = threading.Timer(5.0, lambda: subprocess.run(factory.get_system_command("sleep"), shell=True))
+        
+        try:
+            sleep_timer.start()
+        except RuntimeError as e:
+            raise RuntimeError(f"Issue putting system to sleep ({factory.get_system_command('sleep')}): {e}") from e
 
     cmd = factory.get_system_command(action)
-    logger.info("System is shutting down")
-
-    shutdown_timer = threading.Timer(5.0, lambda: subprocess.run(cmd, shell=True))
-
-    try:
-        shutdown_timer.start()
-    except RuntimeError as e:
-        raise RuntimeError(f"Issue shutting down system ({cmd}): {e}") from e
-
-
-def sys_sleep(req: CommandReq):
-    action = req.name
-
-    if not action:
-        raise ValueError("Missing command in request")
-
-    cmd = factory.get_system_command(action)
-    logger.info("Sleep starting")
 
     try:
         subprocess.run(cmd, shell=True, check=True)
     except subprocess.CalledProcessError as e:
-        raise RuntimeError(f"Sleep command '{cmd}' did not work: {e}") from e
+        raise RuntimeError(f"System command '{cmd}' did not work: {e}") from e

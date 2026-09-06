@@ -34,8 +34,8 @@
     "cancel-shutdown": { "command": "shutdown /a" },
     "empty-recycle-bin": { "command": "powershell.exe -Command Clear-RecycleBin -Force" },
     "screenshot": { "command": "powershell.exe -Command \"(Add-Type -AssemblyName System.Windows.Forms); [System.Windows.Forms.SendKeys]::SendWait('{PRTSC}')\"" },
-    "volume-up": { "command": "nircmd.exe changesysvolume 2000" },
-    "volume-down": { "command": "nircmd.exe changesysvolume -2000" },
-    "volume-mute": { "command": "nircmd.exe mutesysvolume 2" }
+    "volume-up": { "command": "powershell -c \"(New-Object -ComObject WScript.Shell).SendKeys([char]175)\"" },
+    "volume-down": { "command": "powershell -c \"(New-Object -ComObject WScript.Shell).SendKeys([char]174)\"" },
+    "volume-mute": { "command": "powershell -c \"(New-Object -ComObject WScript.Shell).SendKeys([char]173)\"" }
   }
 }

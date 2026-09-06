@@ -6,6 +6,7 @@ from fastapi import FastAPI, logger
 
 from .config import settings
 from .routers import commands
+from .services.commands.factory import _load_file
 
 logging.basicConfig(
     level=logging.INFO,
@@ -19,6 +20,7 @@ async def lifespan(app: FastAPI):
     logger.info(f"starting up app on {settings.host}:{settings.port}")
     
     yield
+    _load_file.cache_clear()
     
     logger.info("shutting down app")
     
