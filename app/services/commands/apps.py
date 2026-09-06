@@ -2,12 +2,12 @@ import subprocess
 import psutil
 from logging import getLogger
 from ...schemas.commands import CommandReq
-from app.services.helper import get_os
+from app.services.helpers import _OS
 from .factory import CommandFactory
 
 logger = getLogger(__name__)
 
-factory = CommandFactory(get_os())
+factory = CommandFactory(_OS)
 
 def is_running(process_name: str) -> bool:
     for proc in psutil.process_iter(["name"]):

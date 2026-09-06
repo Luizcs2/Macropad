@@ -1,34 +1,35 @@
 import json
 import platform
 from pathlib import Path
+from functools import lru_cache
+
+_commands_dir = Path(__file__).parent.parent.parent/"commands"
+
+@lru_cache(maxsize=3)
+def _load_file(os_name: str) -> dict:
+    files = {
+        "Windows" : "windows.json",
+        "Darwin" : "darwin.json",
+        "Linux" : "linux.json"
+    }
+
+    if os_name not in files:
+        raise NotImplementedError (
+            f"OS {os_name} not yet supported"
+        )
+
+    path = _commands_dir / files[os_name]
+
+    with open (path , "r", encoding="utf-8") as file:
+            return json.load(file)
 
 class CommandFactory:
     def __init__(self,os_name:str):
         self.os_name = os_name
-
-        self.commands_dir = (Path(__file__).parent.parent.parent/"commands")
-
-        self.file = self._load_file()
-
-
-    def _load_file(self) -> dict:
-        files = {
-            "Windows" : "windows.json",
-            "Darwin" : "darwin.json",
-            "Linux" : "linux.json"
-        }
-
-        if self.os_name not in files:
-            raise NotImplementedError (
-                f"OS {self.os_name} not yet supported"
-            )
-
-        path = self.commands_dir / files[self.os_name]
-
-        with open (path , "r", encoding="utf-8") as file:
-            return json.load(file)
+        self.file = _load_file(os_name)
 
     def get_system_command(self,cmd:str) -> str:
+        """Get the system command for a given command name."""
         if cmd not in self.file["system"]:
             raise ValueError (f"The Command {cmd} is not found")
         return self.file["system"][cmd]["command"]
